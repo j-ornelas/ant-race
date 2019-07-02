@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
-export const AntListContainer = styled.View`
+export const AntListContainer = styled.ScrollView`
   flex: 8;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  background-color: whitesmoke;
 `;

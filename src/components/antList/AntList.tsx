@@ -9,7 +9,9 @@ interface HomeProps {
 export class AntList extends Component<HomeProps> {
   render() {
     return (
-      <AntListContainer>
+      <AntListContainer
+        contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
+      >
       {this.props.ants.map((ant:Ant) => (
         <AntListItem key={ant.name} ant={ant} />
       ))}
