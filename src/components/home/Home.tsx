@@ -9,8 +9,7 @@ import { Footer } from '../footer/Footer';
 import { Header } from '../header/Header';
 import { Ant } from '../../interfaces';
 import { setAnts, startCalculating, endCalculating } from '../../redux/actions';
-
-import { TouchableOpacity } from 'react-native';
+import { generateAntWinLikelihoodCalculator } from '../../utils';
 
 interface HomeProps {
   ants: Ant[];
@@ -24,26 +23,30 @@ class HomeComponent extends Component<HomeProps> {
     this.props.setAnts(this.props.ants);
   }
 
+  startCalculating():void {
+    this.props.antState.allAnts.forEach(ant => {
+      this.props.startCalculating(ant);
+      const generate = generateAntWinLikelihoodCalculator();
+      generate((liklihood:number) => this.props.endCalculating(ant, liklihood));
+    })
+  }
+
+  sortAnts():Ant[] {
+    const sortedAnts = [...this.props.antState.allAnts ];
+    sortedAnts.sort((a,b) => {
+      if (a.chanceToWin === undefined) return -1;
+      if (b.chanceToWin === undefined) return 1;
+      return a.chanceToWin - b.chanceToWin
+    }).reverse();
+    return sortedAnts;
+  }
+
   render() {
     return (
       <HomeContainer>
         <Header />
-        <AntList ants={this.props.antState.allAnts}/>
-        <Footer />
-        <TouchableOpacity style={{ height: 100, width: 200, backgroundColor: 'red'}}
-          onPress={() => {
-            this.props.antState.allAnts.forEach(ant => {
-              this.props.startCalculating(ant);
-            })
-          }}
-        />
-        <TouchableOpacity style={{ height: 100, width: 200, backgroundColor: 'green'}}
-          onPress={() => {
-            this.props.antState.allAnts.forEach(ant => {
-              this.props.endCalculating(ant, 1);
-            })
-          }}
-        />
+        <AntList ants={this.sortAnts()}/>
+        <Footer startCalculating={() => this.startCalculating()}/>
       </HomeContainer>
     );
   }
