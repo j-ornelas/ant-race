@@ -11,8 +11,6 @@ import { Ant } from '../../interfaces';
 import { setAnts, startCalculating, endCalculating } from '../../redux/actions';
 import { generateAntWinLikelihoodCalculator } from '../../utils';
 
-import { TouchableOpacity } from 'react-native';
-
 interface HomeProps {
   ants: Ant[];
   setAnts: Function;
@@ -33,11 +31,21 @@ class HomeComponent extends Component<HomeProps> {
     })
   }
 
+  sortAnts():Ant[] {
+    const sortedAnts = [...this.props.antState.allAnts ];
+    sortedAnts.sort((a,b) => {
+      if (a.chanceToWin === undefined) return -1;
+      if (b.chanceToWin === undefined) return 1;
+      return a.chanceToWin - b.chanceToWin
+    }).reverse();
+    return sortedAnts;
+  }
+
   render() {
     return (
       <HomeContainer>
         <Header />
-        <AntList ants={this.props.antState.allAnts}/>
+        <AntList ants={this.sortAnts()}/>
         <Footer startCalculating={() => this.startCalculating()}/>
       </HomeContainer>
     );
