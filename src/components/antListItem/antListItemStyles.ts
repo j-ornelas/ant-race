@@ -18,12 +18,18 @@ export const AntStatus = styled.View`
   height: 100%;
   width: 100;
   background-color: ${(props:{ statusColor:string }) => props.statusColor};
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
 `;
 
 export const InfoContainer = styled.View`
   flex: 1;
   justify-content: center;
   padding-left: 10;
+`;
+
+export const StatusText = styled.Text`
 `;
 
 export const Title = styled.Text`

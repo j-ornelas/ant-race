@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Ant } from '../../interfaces';
 import {
-  AntContainer, AntStatus, InfoContainer, Title, Value
+  AntContainer, AntStatus, InfoContainer, Title, Value, StatusText
 } from './antListItemStyles';
 
 interface AntListItemProps {
@@ -15,10 +15,19 @@ export class AntListItem extends Component<AntListItemProps> {
     return 'green';
   }
 
+  renderStatus():JSX.Element {
+    const { ant } = this.props;
+    if (ant.isCalculating === undefined) return <StatusText>Calculation not yet run...</StatusText>;
+    if (ant.isCalculating === true) return <StatusText>Calculating...</StatusText>;
+    return <StatusText>{ant.chanceToWin}</StatusText>
+  }
+
   render() {
     return (
       <AntContainer>
-        <AntStatus statusColor={this.generateStatusColor()} />
+        <AntStatus statusColor={this.generateStatusColor()}>
+          {this.renderStatus()}
+        </AntStatus>
         <InfoContainer>
           <Title>Name: <Value>{this.props.ant.name}</Value></Title>
           <Title>Color: <Value>{this.props.ant.color}</Value></Title>
