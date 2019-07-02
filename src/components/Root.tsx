@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import { Home } from './Home';
+import { Home } from './home/Home';
 import { Query } from 'react-apollo';
 import { GET_ANTS } from '../graphql';
 
