@@ -38,10 +38,7 @@ class HomeComponent extends Component<HomeProps> {
       <HomeContainer>
         <Header />
         <AntList ants={this.props.antState.allAnts}/>
-        <Footer />
-        <TouchableOpacity style={{ height: 100, width: 200, backgroundColor: 'red'}}
-          onPress={() => this.startCalculating()}
-        />
+        <Footer startCalculating={() => this.startCalculating()}/>
       </HomeContainer>
     );
   }

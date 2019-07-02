@@ -6,3 +6,9 @@ export const FooterContainer = styled.View`
   border-color: red;
   border-width: 2;
 `;
+
+export const CalculateButton = styled.TouchableOpacity`
+  height: 100%;
+  width: auto;
+  background-color: grey;
+`;

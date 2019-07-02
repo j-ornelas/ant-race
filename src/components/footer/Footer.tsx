@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { FooterContainer } from './footerStyles';
+import { FooterContainer, CalculateButton } from './footerStyles';
 
-export class Footer extends Component {
+interface FooterProps {
+  startCalculating():void;
+}
+export class Footer extends Component<FooterProps> {
   render() {
     return (
       <FooterContainer>
+         <CalculateButton onPress={this.props.startCalculating}/>
       </FooterContainer>
     );
   }
