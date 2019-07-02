@@ -10,3 +10,24 @@ export const setAnts = (ants:Ant[]) => ({
   type: ActionTypes.SET_ANTS,
   payload: ants
 })
+// start calculating
+export interface StartCalculatingInterface {
+  type: ActionTypes.START_CALCULATING,
+  payload: Ant;
+}
+export const startCalculating = (ant:Ant) => ({
+  type: ActionTypes.START_CALCULATING,
+  payload: ant
+});
+// end calculating
+export interface EndCalculatingInterface {
+  type: ActionTypes.END_CALCULATING,
+  payload: {
+    ant:Ant;
+    chanceToWin:number;
+  }
+}
+export const endCalculating = (ant:Ant, chanceToWin:number) => ({
+  type: ActionTypes.END_CALCULATING,
+  payload: { ant, chanceToWin }
+});

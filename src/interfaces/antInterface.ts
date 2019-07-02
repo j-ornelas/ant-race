@@ -4,4 +4,5 @@ export interface Ant {
   name:string;
   weight:number;
   chanceToWin:number|undefined;
+  isCalculating:boolean|undefined;
 }
