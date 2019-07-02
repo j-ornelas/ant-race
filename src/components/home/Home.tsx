@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HomeContainer } from './homeStyles';
 import { AntList } from '../antList/AntList';
+import { Footer } from '../footer/Footer';
 import { Ant } from '../../interfaces';
 
 interface HomeProps {
@@ -11,6 +12,7 @@ export class Home extends Component<HomeProps> {
     return (
       <HomeContainer>
         <AntList ants={this.props.ants}/>
+        <Footer />
       </HomeContainer>
     );
   }
