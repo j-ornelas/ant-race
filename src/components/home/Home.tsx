@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { HomeContainer } from './homeStyles';
 import { Text } from 'react-native';
-import { Ant } from '../interfaces';
+import { Ant } from '../../interfaces';
 
 interface HomeProps {
   ants: Ant[]
