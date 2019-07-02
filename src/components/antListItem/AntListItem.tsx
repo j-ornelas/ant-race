@@ -8,10 +8,17 @@ interface AntListItemProps {
   ant: Ant;
 }
 export class AntListItem extends Component<AntListItemProps> {
+  generateStatusColor():string {
+    const { ant } = this.props;
+    if (ant.isCalculating === undefined) return 'gray';
+    if (ant.isCalculating === true) return 'red';
+    return 'green';
+  }
+
   render() {
     return (
       <AntContainer>
-        <AntStatus />
+        <AntStatus statusColor={this.generateStatusColor()} />
         <InfoContainer>
           <Title>Name: <Value>{this.props.ant.name}</Value></Title>
           <Title>Color: <Value>{this.props.ant.color}</Value></Title>

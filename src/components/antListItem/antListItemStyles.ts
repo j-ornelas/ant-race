@@ -17,7 +17,7 @@ export const AntContainer = styled.View`
 export const AntStatus = styled.View`
   height: 100%;
   width: 100;
-  background-color: green;
+  background-color: ${(props:{ statusColor:string }) => props.statusColor};
 `;
 
 export const InfoContainer = styled.View`
