@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View} from 'react-native';
+import { HomeContainer } from './homeStyles';
+import { Text } from 'react-native';
+import { Ant } from '../interfaces';
 
-export class Home extends Component {
-
+interface HomeProps {
+  ants: Ant[]
+}
+export class Home extends Component<HomeProps> {
   render() {
     return (
-      <View style={styles.container}>
+      <HomeContainer>
         <Text>Number of ants: {this.props.ants.length}</Text>
-      </View>
+      </HomeContainer>
     );
   }
-}
-
-const styles = {
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
 }
