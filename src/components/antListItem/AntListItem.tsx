@@ -19,7 +19,7 @@ export class AntListItem extends Component<AntListItemProps> {
     const { ant } = this.props;
     if (ant.isCalculating === undefined) return <StatusText>Calculation not yet run...</StatusText>;
     if (ant.isCalculating === true) return <StatusText>Calculating...</StatusText>;
-    return <StatusText>{ant.chanceToWin}</StatusText>
+    return <StatusText>Chance to win: {ant.chanceToWin && ant.chanceToWin.toString().substr(2,2)}%</StatusText>
   }
 
   render() {
