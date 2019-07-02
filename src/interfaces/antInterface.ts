@@ -3,4 +3,5 @@ export interface Ant {
   color:string;
   name:string;
   weight:number;
+  chanceToWin:number|undefined;
 }
