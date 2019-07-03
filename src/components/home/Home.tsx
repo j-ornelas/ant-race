@@ -46,7 +46,10 @@ class HomeComponent extends Component<HomeProps> {
       <HomeContainer>
         <Header />
         <AntList ants={this.sortAnts()}/>
-        <Footer startCalculating={() => this.startCalculating()}/>
+        <Footer
+          startCalculating={() => this.startCalculating()}
+          allAnts={this.props.antState.allAnts}
+        />
       </HomeContainer>
     );
   }
