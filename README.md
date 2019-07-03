@@ -8,7 +8,6 @@ This is an app that determines the likely winner of an ant race. It consists of 
 
 #### Requirements
  - Make sure Xcode and Android Studio are set up.
- - Make sure Xcode and Android Studio are set up.
 
 In root project directory...
 
