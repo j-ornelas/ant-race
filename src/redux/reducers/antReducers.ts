@@ -15,7 +15,10 @@ export const antState = (state:AntStateInterface = _DEFAULT_ANT_STATE, action:Ac
     case ActionTypes.START_CALCULATING:
       const updatedAntsStart:Ant[] = [...state.allAnts];
       updatedAntsStart.forEach(ant => {
-        if (ant.name === action.payload.name) ant.isCalculating = true;
+        if (ant.name === action.payload.name) {
+          ant.isCalculating = true;
+          ant.chanceToWin = undefined;
+        }
       })
       return {...state, allAnts: updatedAntsStart };
     case ActionTypes.END_CALCULATING:
