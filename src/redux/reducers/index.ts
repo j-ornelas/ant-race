@@ -3,11 +3,17 @@ import {
   antState,
   AntStateInterface,
 } from './antReducers';
+import {
+  userState,
+  UserStateInterface,
+} from './userReducers';
 
 export interface StoreState {
-  antState:AntStateInterface
+  antState:AntStateInterface;
+  userState:UserStateInterface;
 }
 
-export const reducers = combineReducers<StoreState>({
+export const reducers = combineReducers({
   antState,
+  userState,
 });
