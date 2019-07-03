@@ -30,6 +30,7 @@ export const InfoContainer = styled.View`
 `;
 
 export const StatusText = styled.Text`
+  color: white;
 `;
 
 export const Title = styled.Text`
