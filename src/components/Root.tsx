@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Text } from 'react-native';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { Home } from './home/Home';
 import { Query } from 'react-apollo';
+import { StoreState } from '../redux/reducers';
+import { UserStateInterface } from '../redux/reducers/userReducers';
+import { Login } from './login/Login';
+
 import { GET_ANTS } from '../graphql';
 
-export default class App extends Component {
+interface RootProps {
+  loginUser:Function;
+  userState:UserStateInterface
+}
+class RootComponent extends Component<RootProps> {
   render() {
-    return (
+    return this.props.userState.token ? (
       <Query
         query={GET_ANTS}
       >
@@ -16,6 +26,13 @@ export default class App extends Component {
           if (data) return <Home ants={data.ants} />
         }}
       </Query>
+    ) : (
+      <Login />
     );
   }
 }
+const mapStateToProps = ({ userState }:StoreState) => ({
+  userState,
+})
+
+export default connect(mapStateToProps, null)(RootComponent);
