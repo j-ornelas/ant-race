@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FooterContainer, CalculateButton, AnimationContainer } from './footerStyles';
+import { FooterContainer, CalculateButton, AnimationContainer, StatusText } from './footerStyles';
 import { Animated, Dimensions, Image } from 'react-native';
 import { Ant } from '../../interfaces';
 
@@ -35,10 +35,30 @@ export class Footer extends Component<FooterProps> {
     ).start()
   }
 
+  hasYetToCalculate():boolean {
+    return this.props.allAnts.every((ant) => ant.isCalculating === undefined);
+  }
+
+  hasFinishedCalculating():boolean {
+    return this.props.allAnts.every((ant) => ant.chanceToWin !== undefined)
+  }
+
+  renderStatus(hasYetToCalc:boolean, hasFinished:boolean):string {
+    if (hasYetToCalc) return 'RUN CALCULATION!';
+    if (hasFinished) return 'CALCULATION COMPLETED!'
+    return 'CALCULATING...'
+
+  }
+
   render() {
+    const hasYetToCalc = this.hasYetToCalculate();
+    const hasFinished = this.hasFinishedCalculating();
+
     return (
       <FooterContainer>
-         <CalculateButton onPress={this.props.startCalculating}/>
+         <CalculateButton onPress={this.props.startCalculating}>
+           <StatusText>{this.renderStatus(hasYetToCalc, hasFinished)}</StatusText>
+         </CalculateButton>
          <AnimationContainer>
            <Animated.View style={[this.antPosition.getLayout()]}>
            <Image

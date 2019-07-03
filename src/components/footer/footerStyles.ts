@@ -9,6 +9,9 @@ export const FooterContainer = styled.View`
 `;
 
 export const CalculateButton = styled.TouchableOpacity`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 30%;
   width: 50%;
   background-color: grey;
@@ -20,4 +23,8 @@ export const AnimationContainer = styled.View`
   flex: 1;
   width: 100%;
   flex-direction: row;
+`;
+
+export const StatusText = styled.Text`
+  color: white;
 `;
