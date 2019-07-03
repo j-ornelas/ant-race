@@ -8,6 +8,7 @@ This is an app that determines the likely winner of an ant race. It consists of 
 
 #### Requirements
  - Make sure Xcode and Android Studio are set up.
+ - Make sure [react-native-cli](https://facebook.github.io/react-native/docs/getting-started.html) is installed.
 
 In root project directory...
 
